@@ -1,22 +1,22 @@
 #include "AVLTree.hpp"
 
-AVLTree::AVLTree() { //реализаци€ конструктора
+AVLTree::AVLTree() { 
 }
 
-AVLTree::~AVLTree() { //реализаци€ деструктора
+AVLTree::~AVLTree() { 
     clear();
 }
 
 AVLNode* AVLTree::find(int value) const { 
-    auto cNode = root; //объ€вление переменной со сложным типом (автоматическое определение компил€тором типа данных)
+    auto cNode = root; 
 
-    while (cNode != nullptr && cNode->value != value) { //пока есть указатель и значение Node не равно value
+    while (cNode != nullptr && cNode->value != value) { 
         if (cNode->value < value) { 
-            cNode = cNode->right;//если меньше, вправо
+            cNode = cNode->right;
             
         }
         else {
-            cNode = cNode->left; //если больше разница высоты, то сдвиг влево, изначально value=-1
+            cNode = cNode->left; 
         }
     }
 
@@ -27,19 +27,19 @@ void AVLTree::insert(int value) {
     auto newNodePtr = &root; 
     std::vector<AVLNode**> disbalancePtrs;
 
-    while (*newNodePtr != nullptr) { //пока новый указатель не равен нулевому указателю
+    while (*newNodePtr != nullptr) { 
         disbalancePtrs.push_back(newNodePtr);
 
         if (value > (*newNodePtr)->value) {
             newNodePtr = &((*newNodePtr)->right);
-        } //перемещение вправо
+        } 
         else {
             newNodePtr = &((*newNodePtr)->left);
-        } //влево
+        } 
     }
 
     *newNodePtr = new AVLNode(value);
-    disbalancePtrs.push_back(newNodePtr); //перегрузка (с библиотекой <vector>)
+    disbalancePtrs.push_back(newNodePtr); 
 
     balance(disbalancePtrs);
     size++;
@@ -64,20 +64,19 @@ void AVLTree::erase(int value) {
         return;
     }
 
-    // no children
     if ((*delPtr)->left == nullptr && (*delPtr)->right == nullptr) {
         delete* delPtr;
         *delPtr = nullptr;
     }
-    // левый дочерний объект
+   
     else if ((*delPtr)->right == nullptr) {
 
         auto badPtr = *delPtr;
 
         (*delPtr) = (*delPtr)->left;
-        delete badPtr; //удаление динамического объекта
+        delete badPtr; 
     }
-   //правый дочерний объект
+   
     else {
         disbalancePtrs.push_back(delPtr);
         auto delPtrIndex = disbalancePtrs.size();
@@ -182,7 +181,7 @@ void AVLTree::display() {
 
     if (root != nullptr) {
         display(root);
-    } //показывает корень
+    } 
     else {
         std::cout << "ѕусто"; 
     }

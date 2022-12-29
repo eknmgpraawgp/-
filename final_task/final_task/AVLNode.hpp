@@ -1,4 +1,4 @@
-#pragma once // означает, что данный файл может быть подключен только один раз
+#pragma once 
 
 #include <iostream>
 
@@ -6,9 +6,9 @@
 
 class AVLNode : public Node {
 public:
-	int height = 0;				//
-	AVLNode* left = nullptr;	// зададим значения по умолчанию
-	AVLNode* right = nullptr;	//
+	int height = 0;				
+	AVLNode* left = nullptr;	
+	AVLNode* right = nullptr;	
 	AVLNode(int value);		
 	void display() override;
 	void updateValues();

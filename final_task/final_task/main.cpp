@@ -20,12 +20,10 @@ int main() {
         int x;
         cin >> x;
 
-        if (tree.find(x) == nullptr) { //работает метод
+        if (tree.find(x) == nullptr) { 
             tree.insert(x);
         } 
-        else {
-            cout << endl << "Нельзя использовать повторяющиеся элементы(" << x << ")";
-        }
+        
     }
 
     cout << endl << endl << "Ваше сбалансированное AVL дерево:";

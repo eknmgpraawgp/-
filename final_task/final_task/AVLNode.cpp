@@ -3,19 +3,19 @@
 AVLNode::AVLNode(int value) : Node(value), height(1) {
 }
 
-void AVLNode::display() { //оторбражение дерева
-    if (right != nullptr) { //если есть указатель направо (правое поддеревье)
+void AVLNode::display() { 
+    if (right != nullptr) { 
         std::cout << "     |---- " << "[" << right->value << "]" << std::endl;
     }
 
     std::cout << "|----[" << value << "]" << std::endl;
 
-    if (left != nullptr) {//если есть налево (левое поддеревье)
+    if (left != nullptr) {
         std::cout << "     |---- " << "[" << left->value << "]" << std::endl;
     }
 }
 
-void AVLNode::updateValues() { //обновления значений
+void AVLNode::updateValues() { 
     auto leftCount = 0;
     auto leftHeight = 0;
 
@@ -30,17 +30,17 @@ void AVLNode::updateValues() { //обновления значений
         rightHeight = right->height;
     }
 
-    height = std::max(leftHeight, rightHeight) + 1; //подсчет высоты
+    height = std::max(leftHeight, rightHeight) + 1; 
 }
 
-int AVLNode::balanceFactor() { //проверяем сбалансированность (разницу высот)
+int AVLNode::balanceFactor() { 
     auto leftHeight = left != nullptr ? left->height : 0;
     auto rightHeight = right != nullptr ? right->height : 0;
 
     return leftHeight - rightHeight; 
 }
 
-AVLNode* AVLNode::rightRotate() {//код реализующий правый поворот
+AVLNode* AVLNode::rightRotate() {
     AVLNode* leftTmp = left;
     left = left->right;
     leftTmp->right = this;
@@ -51,7 +51,7 @@ AVLNode* AVLNode::rightRotate() {//код реализующий правый поворот
     return leftTmp;
 }
 
-AVLNode* AVLNode::leftRotate() { //код реализующий  левый поворот
+AVLNode* AVLNode::leftRotate() { 
     AVLNode* rightTmp = right;
 
     right = right->left;

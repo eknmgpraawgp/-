@@ -1,11 +1,11 @@
-#pragma once // означает, что данный файл может быть подключен только один раз
+#pragma once 
 
 class Node {
 public:
-	const int value = -1; // зададим
-	Node(int value);      // значения
-	Node* left = nullptr; // по умолчанию 
-	Node* right = nullptr;//
+	const int value = -1; 
+	Node(int value);      
+	Node* left = nullptr; 
+	Node* right = nullptr;
 public:
-	virtual void display() = 0;//
+	virtual void display() = 0;
 };

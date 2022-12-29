@@ -1,12 +1,12 @@
-#pragma once  //означает, что данный файл может быть подключен только один раз
+#pragma once  
 
 #include "Tree.hpp"
 #include "AVLNode.hpp"
 
 class AVLTree : public Tree<AVLNode> {
 public:
-	AVLTree(); //конструктор
-	~AVLTree(); //деструктор для очистки памяти 
+	AVLTree(); 
+	~AVLTree(); 
 
 public:
 	AVLNode* find(int value) const override;
@@ -14,9 +14,9 @@ public:
 	void erase(int value) override;
 	void clear() override;
 	int getSize() const;
-	void balance(std::vector<AVLNode**> disbalancedNodesPtrs); //балансировка
+	void balance(std::vector<AVLNode**> disbalancedNodesPtrs); 
 	bool isEmpty() const;
-	void display() override; //отображение древа
+	void display() override; 
 	void display(AVLNode* node, int depth = 0, int state = 0);
 
 public:
